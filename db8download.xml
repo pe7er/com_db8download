@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+    <name>com_db8download</name>
+    <creationDate>2015-10-20</creationDate>
+    <copyright>Copyright (C) 2015. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <author>Peter Martin</author>
+    <authorEmail>joomla@db8.nl</authorEmail>
+    <authorUrl>http://www.db8.nl</authorUrl>
+    <version>1.0.0</version>
+    <description>Component to manage downloads</description>
+    
+    <scriptfile>script.php</scriptfile>
+    
+    <install> <!-- Runs on install -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <uninstall> <!-- Runs on uninstall -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+
+    <files folder="site">
+        <filename>db8download.php</filename>
+        <filename>controller.php</filename>
+        <filename>router.php</filename>
+        <folder>views</folder>
+        <folder>models</folder>
+        <folder>controllers</folder>
+        <folder>helpers</folder>
+        <folder>assets</folder>
+    </files>
+    <languages folder="languages/site">
+	<language tag="nl-NL">nl-NL/nl-NL.com_db8download.ini</language>
+	<language tag="en-GB">en-GB/en-GB.com_db8download.ini</language>
+    </languages>
+    <administration>
+        <menu img="components/com_db8download/assets/images/s_com_db8download.png" >COM_DB8DOWNLOAD</menu>
+        <submenu>
+            
+		<menu link="option=com_db8download&amp;view=files" view="files" img="components/com_db8download/assets/images/s_files.png" alt="Db8download/Files">COM_DB8DOWNLOAD_TITLE_FILES</menu>
+
+		<menu link="option=com_categories&amp;extension=com_db8download" view="categories" img="components/com_db8download/assets/images/s_files.png" alt="Db8download/Categories">COM_DB8DOWNLOAD_FILES_CATID</menu>
+
+        </submenu>
+        <files folder="administrator">
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>controller.php</filename>
+            <filename>db8download.php</filename>
+            <folder>controllers</folder>
+            <folder>assets</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>sql</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+        </files>
+        <languages folder="languages/administrator">
+		<language tag="nl-NL">nl-NL/nl-NL.com_db8download.ini</language>
+		<language tag="nl-NL">nl-NL/nl-NL.com_db8download.sys.ini</language>
+		<language tag="en-GB">en-GB/en-GB.com_db8download.ini</language>
+		<language tag="en-GB">en-GB/en-GB.com_db8download.sys.ini</language>
+        </languages>
+    </administration>
+    <plugins>
+        <plugin group="search" plugin="db8download"/>
+    </plugins>
+    <modules>
+		<module module="mod_db8download" />
+	</modules>
+</extension>
