@@ -24,7 +24,14 @@ class Db8downloadHelper {
 			'index.php?option=com_db8download&view=files',
 			$vName == 'files'
 		);
-		JHtmlSidebar::addEntry(
+
+        JHtmlSidebar::addEntry(
+            JText::_('COM_DB8DOWNLOAD_TITLE_USERS'),
+            'index.php?option=com_db8download&view=users',
+            $vName == 'users'
+        );
+
+        JHtmlSidebar::addEntry(
 			JText::_('JCATEGORIES') . ' (' . JText::_('COM_DB8DOWNLOAD_TITLE_FILES') . ')',
 			"index.php?option=com_categories&extension=com_db8download",
 			$vName == 'categories'

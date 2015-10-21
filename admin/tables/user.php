@@ -11,9 +11,9 @@
 defined('_JEXEC') or die;
 
 /**
- * file Table class
+ * user Table class
  */
-class Db8downloadTablefile extends JTable
+class Db8downloadTableuser extends JTable
 {
 
 	/**
@@ -23,7 +23,7 @@ class Db8downloadTablefile extends JTable
 	 */
 	public function __construct(&$db)
 	{
-		parent::__construct('#__db8download_files', 'id', $db);
+		parent::__construct('#__db8download_users', 'id', $db);
 	}
 
 	/**
@@ -40,67 +40,18 @@ class Db8downloadTablefile extends JTable
 
 		
 
-		//Support for alias field: alias
-			if(empty($array['alias'])){
-				if(empty($array['name'])){
-						$array['alias'] = JFilterOutput::stringURLSafe(date('Y-m-d H:i:s'));
-					}
-				else{
-						$array['alias'] = JFilterOutput::stringURLSafe(trim($array['name']));
-					}
+		//Support for multiple or not foreign key field: file
+			if(!empty($array['file'])){
+				if(is_array($array['file'])){
+					$array['file'] = implode(',',$array['file']);
 				}
-
-				//Support for file field: filename
-				$input = JFactory::getApplication()->input;
-				$files = $input->files->get('jform');
-				if(!empty($files['filename'])){
-					jimport('joomla.filesystem.file');
-					$file = $files['filename'];
-
-					//Check if the server found any error.
-					$fileError = $file['error'];
-					$message = '';
-					if($fileError > 0 && $fileError != 4) {
-						switch ($fileError) {
-							case 1:
-								$message = JText::_( 'File size exceeds allowed by the server');
-								break;
-							case 2:
-								$message = JText::_( 'File size exceeds allowed by the html form');
-								break;
-							case 3:
-								$message = JText::_( 'Partial upload error');
-								break;
-						}
-						if($message != '') {
-							JError::raiseWarning(500, $message);
-							return false;
-						}
-					}
-					else if($fileError == 4){
-						if(isset($array['filename_hidden'])){
-							$array['filename'] = $array['filename_hidden'];
-						}
-					}
-					else{
-
-						//Replace any special characters in the filename
-						$filename = explode('.', $file['name']);
-						$filename[0] = preg_replace("/[^A-Za-z0-9]/i", "-", $filename[0]);
-
-						//Add Timestamp MD5 to avoid overwriting
-						$filename = md5(time()) . '-' . implode('.',$filename);
-						$uploadPath = JPATH_ADMINISTRATOR . '/components/com_db8download/com_db8download/' . $filename;
-						$fileTemp = $file['tmp_name'];
-						if(!JFile::exists($uploadPath)){
-							if (!JFile::upload($fileTemp, $uploadPath)){
-								JError::raiseWarning(500, 'Error moving file');
-								return false;
-							}
-						}
-						$array['filename'] = $filename;
-					}
+				else if(strrpos($array['file'], ',') != false){
+					$array['file'] = explode(',',$array['file']);
 				}
+			}
+			else {
+				$array['file'] = '';
+			}
 		$input = JFactory::getApplication()->input;
 		$task = $input->getString('task', '');
 		if(($task == 'save' || $task == 'apply') && (!JFactory::getUser()->authorise('core.edit.state','com_db8download') && $array['state'] == 1)){
@@ -126,10 +77,10 @@ class Db8downloadTablefile extends JTable
 			$registry->loadArray($array['metadata']);
 			$array['metadata'] = (string) $registry;
 		}
-		if (!JFactory::getUser()->authorise('core.admin', 'com_db8download.file.' . $array['id']))
+		if (!JFactory::getUser()->authorise('core.admin', 'com_db8download.user.' . $array['id']))
 		{
-			$actions         = JAccess::getActionsFromFile(JPATH_ADMINISTRATOR . '/components/com_db8download/access.xml',"/access/section[@name='file']/");
-			$default_actions = JAccess::getAssetRules('com_db8download.file.' . $array['id'])->getData();
+			$actions         = JAccess::getActionsFromFile(JPATH_ADMINISTRATOR . '/components/com_db8download/access.xml',"/access/section[@name='user']/");
+			$default_actions = JAccess::getAssetRules('com_db8download.user.' . $array['id'])->getData();
 			$array_jaccess   = array();
 			foreach ($actions as $action)
 			{
@@ -271,7 +222,7 @@ class Db8downloadTablefile extends JTable
 	{
 		$k = $this->_tbl_key;
 
-		return 'com_db8download.file.' . (int) $this->$k;
+		return 'com_db8download.user.' . (int) $this->$k;
 	}
 
 	/**
@@ -304,8 +255,6 @@ class Db8downloadTablefile extends JTable
 		{
 
 			
-	jimport('joomla.filesystem.file');
-	$result = JFile::delete(JPATH_ADMINISTRATOR . '/components/com_db8download/com_db8download/' . $this->filename);
 		}
 
 		return $result;

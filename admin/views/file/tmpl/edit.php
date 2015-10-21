@@ -74,18 +74,24 @@ $document->addStyleSheet('components/com_db8download/assets/css/db8download.css'
 				<div class="control-label"><?php echo $this->form->getLabel('catid'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('catid'); ?></div>
 			</div>
+
 			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('filename'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('filename'); ?></div>
 			</div>
 
-				<?php if (!empty($this->item->filename)) : ?>
-						<a href="<?php echo JRoute::_(JUri::base() . 'components' . DIRECTORY_SEPARATOR . 'com_db8download' . DIRECTORY_SEPARATOR . 'db8downloads' .DIRECTORY_SEPARATOR . $this->item->filename, false);?>"><?php echo JText::_("COM_DB8DOWNLOAD_VIEW_FILE"); ?></a>
-				<?php endif; ?>
-				<input type="hidden" name="jform[filename]" id="jform_filename_hidden" value="<?php echo $this->item->filename ?>" />			<div class="control-group">
+			<?php if (!empty($this->item->filename)) : ?>
+				<a href="<?php echo JRoute::_(JUri::base() . 'components' . DIRECTORY_SEPARATOR . 'com_db8download' . DIRECTORY_SEPARATOR . 'com_db8download' .DIRECTORY_SEPARATOR . $this->item->filename, false);?>"><?php echo JText::_("COM_DB8DOWNLOAD_VIEW_FILE"); ?></a>
+			<?php endif; ?>
+			<input type="hidden" name="jform[filename]" id="jform_filename_hidden" value="<?php echo $this->item->filename ?>" />			<div class="control-group">
+				<div class="control-label"><?php echo $this->form->getLabel('image'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('image'); ?></div>
+			</div>
+			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('description'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('description'); ?></div>
 			</div>
+
 			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('access'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('access'); ?></div>

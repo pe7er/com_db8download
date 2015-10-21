@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="search">
+    <name>plg_search_db8download</name>
+    <author>Peter Martin</author>
+    <creationDate>2015-10-21</creationDate>
+    <copyright>Copyright (C) 2015. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>joomla@db8.nl</authorEmail>
+    <authorUrl>http://www.db8.nl</authorUrl>
+    <version>1.0.0</version>
+    <description>PLG_SEARCH_COM_DB8DOWNLOAD_XML_DESCRIPTION</description>
+    <files>
+        <filename plugin="db8download">db8download.php</filename>
+        <filename>index.html</filename>
+    </files>
+    <languages folder="../../../languages/site/search/db8download">
+        
+			<language tag="nl-NL">../../../languages/plugins/search/db8download/nl-NL/nl-NL.plg_search_db8download.ini</language>
+			<language tag="nl-NL">../../../languages/plugins/search/db8download/nl-NL/nl-NL.plg_search_db8download.sys.ini</language>
+			<language tag="en-GB">../../../languages/plugins/search/db8download/en-GB/en-GB.plg_search_db8download.ini</language>
+			<language tag="en-GB">../../../languages/plugins/search/db8download/en-GB/en-GB.plg_search_db8download.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+
+            <fieldset name="basic">
+                <field name="search_limit" type="text" default="50" size="5"
+                       description="PLG_SEARCH_COM_DB8DOWNLOAD_FIELD_SEARCHLIMIT_DESC"
+                       label="PLG_SEARCH_COM_DB8DOWNLOAD_FIELD_SEARCHLIMIT_LABEL" />
+            </fieldset>
+
+        </fields>
+    </config>
+</extension>

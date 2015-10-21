@@ -97,6 +97,9 @@ if (!empty($this->extra_sidebar)) {
                         <?php echo JHtml::_('grid.sort', 'COM_DB8DOWNLOAD_FILES_FILENAME', 'a.`filename`', $listDirn, $listOrder); ?>
                     </th>
                     <th class='left'>
+                        <?php echo JHtml::_('grid.sort',  'COM_DB8DOWNLOAD_FILES_IMAGE', 'a.`image`', $listDirn, $listOrder); ?>
+                    </th>
+                    <th class='left'>
                         <?php echo JHtml::_('grid.sort', 'COM_DB8DOWNLOAD_FILES_ACCESS', 'a.`access`', $listDirn, $listOrder); ?>
                     </th>
                     <th class='left'>
@@ -194,11 +197,14 @@ if (!empty($this->extra_sidebar)) {
                         <td>
                             <?php
                             if (!empty($item->filename)):
-                                $uploadPath = 'components' . DIRECTORY_SEPARATOR . 'com_db8download' . DIRECTORY_SEPARATOR . 'db8downloads' . DIRECTORY_SEPARATOR . $item->filename;
+                                $uploadPath = 'components' . DIRECTORY_SEPARATOR . 'com_db8download' . DIRECTORY_SEPARATOR . 'com_db8download' . DIRECTORY_SEPARATOR . $item->filename;
                                 echo '<a href="' . JRoute::_(JUri::base() . $uploadPath, false) . '" target="_blank" title="See the filename">' . $item->filename . '</a>';
                             else:
                                 echo $item->filename;
                             endif; ?>
+                        </td>
+                        <td>
+                            <?php echo $item->image; ?>
                         </td>
                         <td>
                             <?php echo $item->access; ?>

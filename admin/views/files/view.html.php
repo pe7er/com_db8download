@@ -121,6 +121,7 @@ class Db8downloadViewFiles extends JViewLegacy
             'a.`alias`' => JText::_('COM_DB8DOWNLOAD_FILES_ALIAS'),
             'a.`catid`' => JText::_('COM_DB8DOWNLOAD_FILES_CATID'),
             'a.`filename`' => JText::_('COM_DB8DOWNLOAD_FILES_FILENAME'),
+            'a.`image`' => JText::_('COM_DB8DOWNLOAD_FILES_IMAGE'),
             'a.`access`' => JText::_('COM_DB8DOWNLOAD_FILES_ACCESS'),
             'a.`language`' => JText::_('JGRID_HEADING_LANGUAGE'),
             'a.`ordering`' => JText::_('JGRID_HEADING_ORDERING'),

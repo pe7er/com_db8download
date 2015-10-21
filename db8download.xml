@@ -9,9 +9,9 @@
     <authorUrl>http://www.db8.nl</authorUrl>
     <version>1.0.0</version>
     <description>Component to manage downloads</description>
-    
+
     <scriptfile>script.php</scriptfile>
-    
+
     <install> <!-- Runs on install -->
         <sql>
             <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
@@ -34,18 +34,28 @@
         <folder>assets</folder>
     </files>
     <languages folder="languages/site">
-	<language tag="nl-NL">nl-NL/nl-NL.com_db8download.ini</language>
-	<language tag="en-GB">en-GB/en-GB.com_db8download.ini</language>
+        <language tag="nl-NL">nl-NL/nl-NL.com_db8download.ini</language>
+        <language tag="en-GB">en-GB/en-GB.com_db8download.ini</language>
     </languages>
+    
     <administration>
-        <menu img="components/com_db8download/assets/images/s_com_db8download.png" >COM_DB8DOWNLOAD</menu>
+
+        <menu img="components/com_db8download/assets/images/s_com_db8download.png">COM_DB8DOWNLOAD</menu>
         <submenu>
-            
-		<menu link="option=com_db8download&amp;view=files" view="files" img="components/com_db8download/assets/images/s_files.png" alt="Db8download/Files">COM_DB8DOWNLOAD_TITLE_FILES</menu>
-
-		<menu link="option=com_categories&amp;extension=com_db8download" view="categories" img="components/com_db8download/assets/images/s_files.png" alt="Db8download/Categories">COM_DB8DOWNLOAD_FILES_CATID</menu>
-
+            <menu link="option=com_db8download&amp;view=files" view="files"
+                  img="components/com_db8download/assets/images/s_files.png" alt="Db8download/Files">
+                COM_DB8DOWNLOAD_TITLE_FILES
+            </menu>
+            <menu link="option=com_db8download&amp;view=users" view="users"
+                  img="components/com_db8download/assets/images/s_users.png" alt="Db8download/Users">
+                COM_DB8DOWNLOAD_TITLE_USERS
+            </menu>
+            <menu link="option=com_categories&amp;extension=com_db8download" view="categories"
+                  img="components/com_db8download/assets/images/s_files.png" alt="Db8download/Categories">
+                COM_DB8DOWNLOAD_FILES_CATID
+            </menu>
         </submenu>
+
         <files folder="administrator">
             <filename>access.xml</filename>
             <filename>config.xml</filename>
@@ -59,17 +69,22 @@
             <folder>tables</folder>
             <folder>views</folder>
         </files>
+
         <languages folder="languages/administrator">
-		<language tag="nl-NL">nl-NL/nl-NL.com_db8download.ini</language>
-		<language tag="nl-NL">nl-NL/nl-NL.com_db8download.sys.ini</language>
-		<language tag="en-GB">en-GB/en-GB.com_db8download.ini</language>
-		<language tag="en-GB">en-GB/en-GB.com_db8download.sys.ini</language>
+            <language tag="nl-NL">nl-NL/nl-NL.com_db8download.ini</language>
+            <language tag="nl-NL">nl-NL/nl-NL.com_db8download.sys.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_db8download.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_db8download.sys.ini</language>
         </languages>
+        
     </administration>
+    
     <plugins>
         <plugin group="search" plugin="db8download"/>
     </plugins>
+    
     <modules>
-		<module module="mod_db8download" />
-	</modules>
+        <module module="mod_db8download"/>
+    </modules>
+    
 </extension>
